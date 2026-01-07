@@ -24,6 +24,89 @@
 
 .. towncrier release notes start
 
+Airflow 3.1.6 (2026-01-13)
+--------------------------
+
+Significant Changes
+^^^^^^^^^^^^^^^^^^^
+
+``is_authorized_hitl_task()`` method now available in auth managers(#59399).
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+This method is now available in auth managers to check whether a user is authorized to approve a HITL task
+
+
+
+``proxy`` and ``proxies`` added to ``DEFAULT_SENSITIVE_FIELDS`` (#59688)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+``proxy`` and ``proxies`` have been added to ``DEFAULT_SENSITIVE_FIELDS`` in secrets_masker to treat proxy configurations as sensitive by default
+
+Bug Fixes
+^^^^^^^^^
+- UI: Add toggle functionality to Dags state filters (#59089)
+- Fix ``deprecated_options`` entry for ``dag_file_processor_timeout`` (#59181) (#60162)
+- Fix ApprovalOperator with SimpleAuthManager when all_admins=True (#59399) (#60116)
+- Record missing ``ti_failure`` metrics for tasks in Airflow 3 (#59731) (#59964)
+- Fix missing TaskInstanceHistory on scheduler TI resets (#59639) (#59752)
+- Prevent client secrets and proxy credentials from being logged in Microsoft Graph hook logs (#59688) (#59792)
+- Fix compat deprecation handling for ``[webserver/base_url]`` (#59659) (#59781)
+- Fix Execution API refresh token (#58782) (#59713)
+- Fix eager-loading DagRun asset relationships before creating DagRunContext (#59714) (#59732)
+- Redact secrets in rendered templates properly when truncating it (#59566) (#59704)
+- Add ``Content-Type`` to request headers in Task SDK calls when missing (#59676) (#59687)
+- UI: Fix Expand+Collapse Translation Key (#59672) (#59674)
+- Fix server context for connections (#59624) (#59652)
+- Add TypeScript ESLint plugin to other core packages (#59605) (#59612)
+- Add @typescript-eslint dev dependencies for version 8.50.0 (#59484) (#59601)
+- Fix clear task instance dialog tasks states (#59363) (#59580)
+- Add log record when listening dag is partitioned but run has no key (#59375) (#59582)
+- Fix Dag Processor logging crash (#59317) (#59581)
+- Flush session() before processing Event Buffer (#59314) (#59559)
+- Add task group ID filtering support to task instance query (#58092) (#59511)
+- Fix message of ``_read_from_logs_server`` when status_code is 403 (#59489) (#59504)
+- ``Pnpm`` upgrade to 10.x and prevent script execution (#59466) (#59512)
+- Fix import errors not cleared for files without Dags (#58242) (#59500)
+- Fix backfill ``run_on_latest_version`` defaulting to False instead of True (#59304) (#59328)
+- Add toaster notifications for Connection Test (#59354) (#59368)
+- Fix ``.airflowignore`` negation not working in subfolders (#58740) (#59305)
+- Fix XCom key handling when keys contain special characters like slash (#58344) (#59311)
+- Fix an odd import of pendulum from sqlalchemy_utils instead of elsewhere. (#59258) (#59265)
+- Don't depend upon FastAPI inside Task-SDK client (#59250) (#59257)
+- Fix links for DurationChart (#59095) (#59237)
+- Fix misleading error message when GitHook creation fails (#59236)
+- Show asset extra in asset list (#59195) (#59201)
+- Prevent dag processor crash on encountering excel files in the Dag directory (#59069) (#59170)
+- Fix ``DagRun.queued_at`` not updating when clearing (#59066) (#59177)
+- Align the term Dag in all translations (#59155)
+- Fix Rendered Templates not showing dictionary items in AF3 (#58071) (#59176)
+- Change task log source display to hidden by default (#58749) (#59045)
+- Fix go back button from FAB iframe (#58997) (#59007)
+- Fix task instance and run tooltips in Grid view (#58359) (#59013)
+
+Miscellaneous
+^^^^^^^^^^^^^
+- Allow ``swc`` and ``esbuild`` install script for SAM (#59608) (#59654)
+- Remove playwright dependency (#59607)
+- Bump Sphinx Airflow theme to ``0.3.0`` (#59538)
+- Bump ruff to ``0.14.8``, uv to ``0.9.15`` (#59058) (#59079)
+
+Doc Only Changes
+^^^^^^^^^^^^^^^^
+- Translations updates [French: (#60157) (#60167),  German: (#59673), PL: (#59675) (#59251) (#59256), Japanese: (#59557),(#59313),
+  Taiwanese Mandarin (#59513) (#59515), Hebrew: (#59133) (#59255), Ca: (#59216), TR: (#59169)]
+- Update webserver probe health check doc (#59942) (#59982)
+- Update API auth. instructions in Docker running docs (#59830) (#59832)
+- Improve CLI date argument help text documentation (#59797) (#59810)
+- Add fast client-side search to Airflow documentation (#59658)
+- Fix broken ``permalink`` icon (#58763)
+- Add Refresh Token logic to auth manager docs (#54196) (#59482)
+- Update json to JSON for consistency in translations (#59323) (#59333)
+- Fix outdated dependency documentation (#58970) (#59219)
+- Add UI/API performance tips (#59004) (#59052)
+- Provide a clear naming and description for the attribute caching ``get_template_context`` (#59023) (#59036)
+- Update the documentation for the LocalExecutor (#58990) (#59022)
+
+
+
 Airflow 3.1.5 (2025-12-12)
 --------------------------
 
